@@ -3,7 +3,7 @@
 # 2)被験者間要因（独立測度），被験者内要因（反復測度）のいずれか，または，両方を含む各タイプの分散分析を扱う
 # 3)引数としては，最初にデータフレーム名，次に計画のタイプ（""で囲むこと）を入力し，その後，各要因の水準数を順に入力する
 # （作成：井関龍太）
-#
+# 
 # 【使用法】
 # anovakunに読み込むためのデータフレームは，以下のような形式で作っておく
 # 1)被験者間要因はタテ，被験者内要因はヨコに並べる
@@ -12,7 +12,7 @@
 # 4)被験者間要因を表すラベルは，水準ごとに別の文字または数字を用いる（同じラベル＝同じ水準と見なされる）
 # 5)被験者内，被験者間要因ともに，前の方の要因から順に各水準のデータを入れ子状に整理して並べること（例を参照）
 # 6)下の被験者１～６の列は例の説明のためにつけたものなので，実際のデータフレームには必要ない
-#
+# 
 # ［AsBC計画の例］（被験者間要因でデータ数が同じ）
 # 		b1	b1	b2	b2
 # 		c1	c2	c1	c2
@@ -23,13 +23,13 @@
 # 	a2	18	12	16	15	---被験者４
 # 	a2	17	14	15	14	---被験者５
 # 	a2	15	13	18	15	---被験者６
-#
+# 
 # データフレームを代入した変数名をxとすると，
-#
+# 
 # > anovakun(x, "AsBC", 2, 2, 2)
-#
+# 
 # のようにして関数を呼び出す
-#
+# 
 # ［ABsC計画の例］（被験者間要因でデータ数がふぞろい）
 # 			c1	c2
 # 	-------------------------------
@@ -43,13 +43,13 @@
 # 	a2	b2	2.2	4.2	---被験者８
 # 	a2	b3	1.3	2.1	---被験者９
 # 	a2	b3	3.4	3.9	---被験者10
-#
+# 
 # データフレームを代入した変数名をxとすると，
-#
+# 
 # > anovakun(x, "ABsC", 2, 3, 2)
-#
+# 
 # のようにして関数を呼び出す
-#
+# 
 # 【オプション】
 # 1)long……long = Tとすると，ロング形式のデータを読み込んで処理する
 # 2)type2……type2 = Tとすると，平方和の計算方法をタイプⅡに切り替える
@@ -105,11 +105,11 @@
 # 48)bgraph……bgraph = "信頼区間のオプション名"とすると，信頼区間つきの棒グラフを出力する；信頼区間は内側・外側の順に２つまで指定できる；
 # 例えば，bgraph = c("cind", "ciml")とすると，差分調整型の正規化に基づく信頼区間とマルチレベルモデルに基づく信頼区間を描画する；
 # なお，このオプションは３要因までの計画についてのみ機能する
-#
+# 
 # ［オプション使用の例］（テクニカルアウトプットによる出力とHolmの方法による多重比較を指定）
-#
+# 
 # > anovakun(x, "AsB", 2, 2, tech = T, holm = T)
-#
+# 
 # 【技術情報】
 # 1)anovakunを構成する関数は，仕様上は，最大で26要因までの計画に対応できる；この上限は，要因を表すラベルとしてアルファベット26文字（LETTERSとletters）を使用していることによる
 # 2)ci.calc関数によるマルチレベルモデルに基づく信頼区間の計算には，lmerTestパッケージを使用している；自由度の推定にはlsmeans関数を用いている（Kenward-Roger法）
@@ -127,7 +127,7 @@
 # 以降の対についてはすべて判断を保留する（p値が基準値を下回っても*マークを表示しない）；調整済みｐ値の表示の際には，調整済みｐ値が
 # 既定の有意水準（５％）を下回った対にのみ*マークを表示する
 # 14)pro.fraction関数は，単純主効果の検定において誤差項をプールしない（水準別誤差項を使用；サブセットに分散分析を再適用するのと同じ）
-#
+# 
 # 【このファイルの含む関数】
 # hmean……調和平均を計算する
 # read.clip……クリップボードの情報を読み込む
@@ -155,7 +155,7 @@
 # mod.Bon.out……修正Bonferroniの方法による多重比較の結果を出力する
 # simeffects.out……単純主効果の検定の結果を出力する
 # anovatan……指定した要因についてデータを分割して単純効果の検定を行う
-#
+# 
 # 【バージョン情報】
 # 1)anovakun version 1.0.0（R 2.5.1作成；2007/09/03公開）
 # ・分散分析，単純主効果の検定，多重比較
@@ -198,7 +198,7 @@
 # ・非加算モデルに基づくオメガ二乗，一般化オメガ二乗のオプションを追加；anova.modeler関数，pro.fraction関数ほかの修正
 # ・結果をクリップボードにも出力するオプションcopyを追加（Linuxでは無効）；anovakun関数の変更
 # 13)anovakun version 4.3.1（R 2.15.0，R 2.15.1作成；2012/09/03公開）
-# ・copy機能がMacで働かないエラーを修正；anovakun関数の修正
+# ・copy機能がMacで働かないエラーを修正；anovakun関数の修正 
 # 14)anovakun version 4.3.2（R 2.15.2作成；2013/01/04公開）
 # ・read.clip関数を追加
 # ・nopostオプションを追加；anovakun関数，post.analysis関数の変更
@@ -252,6 +252,9 @@
 # ・４つ以上の被験者内要因を含むデザインでの平方和のソートのエラーを修正；epsilon.calc関数の修正
 # 30)anovakun version 4.8.5（R 4.0.0作成；2020/05/01公開）
 # ・R 4.0.0における仕様変更に伴う修正；table.out関数の修正
+# 31)anovakun version 4.8.6（R 4.1.0，R 4.1.1作成；2021.10.1公開）
+# ・多重比較の出力時のヘッダを修正；mod.Bon.out関数の修正
+# ・R 4.1.0以降での単純主効果の出力エラーを修正；anvoa.output関数の修正
 #
 # 【この関数の使用に関して】
 # 1)anovakunとこれを構成する関数（コード群）は，自由に使用，改変，再配布していただいて結構です。
@@ -288,11 +291,11 @@ read.clip <- function(...){
 
 
 # ANOVA君本体：プロセス全体の制御を行う関数
-anovakun <- function(dataset, design, ..., long = FALSE, type2 = FALSE, nopost = FALSE, tech = FALSE, data.frame = FALSE, copy = FALSE,
-	holm = FALSE, hc = FALSE, s2r = FALSE, s2d = FALSE, fs1 = FALSE, fs2r = FALSE, fs2d = FALSE, welch = FALSE, criteria = FALSE,
-	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE,
-	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE,
-	gomega = NA, gomegana = NA, prep = FALSE, nesci = FALSE, besci = FALSE, cilmd = FALSE, cilm = FALSE, cind = FALSE, cin = FALSE,
+anovakun <- function(dataset, design, ..., long = FALSE, type2 = FALSE, nopost = FALSE, tech = FALSE, data.frame = FALSE, copy = FALSE, 
+	holm = FALSE, hc = FALSE, s2r = FALSE, s2d = FALSE, fs1 = FALSE, fs2r = FALSE, fs2d = FALSE, welch = FALSE, criteria = FALSE, 
+	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE, 
+	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE, 
+	gomega = NA, gomegana = NA, prep = FALSE, nesci = FALSE, besci = FALSE, cilmd = FALSE, cilm = FALSE, cind = FALSE, cin = FALSE, 
 	ciml = FALSE, cipaird = FALSE, cipair = FALSE, bgraph = c(NA, NA)){
 	maxfact <- nchar(design) - 1# 実験計画全体における要因数
 
@@ -307,27 +310,27 @@ anovakun <- function(dataset, design, ..., long = FALSE, type2 = FALSE, nopost =
 	if(sum(is.na(bgraph)) < 2){# 棒グラフに指定された信頼区間のオプションはオンにする
 		eval(parse(text = paste0(bgraph, " <- TRUE")))
 	}
-	baseresults <- ci.calc(dat = dat, design = design, factnames = factnames,
+	baseresults <- ci.calc(dat = dat, design = design, factnames = factnames, 
 		cilmd = cilmd, cilm = cilm, cind = cind, cin = cin, ciml = ciml, cipaird = cipaird, cipair = cipair)
 
 	# anova.modelerにデータフレームを送り，分散分析の結果を得る
-	mainresults <- anova.modeler(dat = dat, design = design, factnames = factnames, type2 = type2, lb = lb, gg = gg, hf = hf,
-		cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta,
-		eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, pomega = pomega, gomega = gomega,
+	mainresults <- anova.modeler(dat = dat, design = design, factnames = factnames, type2 = type2, lb = lb, gg = gg, hf = hf, 
+		cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta, 
+		eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, pomega = pomega, gomega = gomega, 
 		gomegana = gomegana, prep = prep, nesci = nesci)
 
 	# post.analysesにデータフレームと分散分析の結果を送り，下位検定の結果を得る
-	postresults <- post.analyses(dat = dat, design = design, factnames = factnames, mainresults = mainresults, type2 = type2,
-		nopost = nopost, holm = holm, hc = hc, s2r = s2r, s2d = s2d, fs1 = fs1, fs2r = fs2r, fs2d = fs2d, welch = welch,
-		criteria = criteria, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga,
-		eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, pomega = pomega,
+	postresults <- post.analyses(dat = dat, design = design, factnames = factnames, mainresults = mainresults, type2 = type2, 
+		nopost = nopost, holm = holm, hc = hc, s2r = s2r, s2d = s2d, fs1 = fs1, fs2r = fs2r, fs2d = fs2d, welch = welch, 
+		criteria = criteria, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga, 
+		eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, pomega = pomega, 
 		gomega = gomega, gomegana = gomegana, prep = prep, nesci = nesci)
 
 	# 指定のあった効果量についてブートストラップ信頼区間を計算する
 	if(besci){
-		bootes <- boot.esci(dat, design, factnames = factnames, type2 = type2, nopost = nopost, mainresults = mainresults,
-			postresults = postresults, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga,
-			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana,
+		bootes <- boot.esci(dat, design, factnames = factnames, type2 = type2, nopost = nopost, mainresults = mainresults, 
+			postresults = postresults, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga, 
+			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, 
 			pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep, B = 2000, conf.level = 0.95)
 		mainresults$besci.info <- bootes$besci.info
 		mainresults$bescitab <- bootes$bescitab[[1]]
@@ -342,7 +345,7 @@ anovakun <- function(dataset, design, ..., long = FALSE, type2 = FALSE, nopost =
 
 	# 基本情報の取得
 	info1 <- paste0("[ ", design, "-Type Design ]")# 要因計画の型
-	info2 <- paste0("This output was generated by anovakun 4.8.5 under ", strsplit(R.version$version.string, " \\(")[[1]][1], ".")# バージョン情報など
+	info2 <- paste0("This output was generated by anovakun 4.8.6 under ", strsplit(R.version$version.string, " \\(")[[1]][1], ".")# バージョン情報など
 	info3 <- paste0("It was executed on ", date(), ".")# 実行日時
 	exe.info <- c(info1, info2, info3)
 
@@ -379,17 +382,17 @@ anovakun <- function(dataset, design, ..., long = FALSE, type2 = FALSE, nopost =
 			}
 		}
 		if(is.null(mainresults$besci.info)){
-			retlist <-list("INFORMATION" = rbind(info1, info2, info3),
-				"DESCRIPTIVE STATISTICS" = baseresults,
-				"SPHERICITY INDICES" = list(mainresults$epsi.info1, mainresults$epsitab),
-				"ANOVA TABLE" = list(mainresults$ano.info1, mainresults$anovatab, mainresults$nescitab),
+			retlist <-list("INFORMATION" = rbind(info1, info2, info3), 
+				"DESCRIPTIVE STATISTICS" = baseresults, 
+				"SPHERICITY INDICES" = list(mainresults$epsi.info1, mainresults$epsitab), 
+				"ANOVA TABLE" = list(mainresults$ano.info1, mainresults$anovatab, mainresults$nescitab), 
 				"POST ANALYSES" = postresults)
 		}else{
-			retlist <-list("INFORMATION" = rbind(info1, info2, info3),
-				"DESCRIPTIVE STATISTICS" = baseresults,
-				"SPHERICITY INDICES" = list(mainresults$epsi.info1, mainresults$epsitab),
-				"ANOVA TABLE" = list(mainresults$ano.info1, mainresults$anovatab, mainresults$nescitab),
-				"EFFECT SIZE INFORMATION" = list(mainresults$besci.info, mainresults$bescitab),
+			retlist <-list("INFORMATION" = rbind(info1, info2, info3), 
+				"DESCRIPTIVE STATISTICS" = baseresults, 
+				"SPHERICITY INDICES" = list(mainresults$epsi.info1, mainresults$epsitab), 
+				"ANOVA TABLE" = list(mainresults$ano.info1, mainresults$anovatab, mainresults$nescitab), 
+				"EFFECT SIZE INFORMATION" = list(mainresults$besci.info, mainresults$bescitab), 
 				"POST ANALYSES" = postresults)
 		}
 		if(data.frame == TRUE){
@@ -400,11 +403,11 @@ anovakun <- function(dataset, design, ..., long = FALSE, type2 = FALSE, nopost =
 	}else{# 表形式での出力の場合
 		if(data.frame == TRUE){
 			names(dat) <- c("s", factnames, "y")
-			anova.output(maxfact = maxfact, exe.info = exe.info, baseresults = baseresults,
+			anova.output(maxfact = maxfact, exe.info = exe.info, baseresults = baseresults, 
 				mainresults = mainresults, postresults = postresults)
 			return(list("DATA.FRAME" = dat))# 計算に使用したデータフレームを付加
 		}else{
-			anova.output(maxfact = maxfact, exe.info = exe.info, baseresults = baseresults,
+			anova.output(maxfact = maxfact, exe.info = exe.info, baseresults = baseresults, 
 				mainresults = mainresults, postresults = postresults)
 		}
 	}
@@ -508,7 +511,7 @@ uni.long <- function(dataset, design, ..., long = FALSE){
 		if(withlen > 0){
 			eachcue <- c(sapply(1:withlen, function(x) prod(flev[(betlen+x):maxfact])), 1)[-1]
 			timescue <- prod(flev[(betlen+1):maxfact]) / (eachcue * flev[(betlen+1):maxfact])
-			withlab <- data.frame(lapply(1:withlen, function(x) factor(rep(levlist[[betlen+x]], each = nrow(dataset) * eachcue[x],
+			withlab <- data.frame(lapply(1:withlen, function(x) factor(rep(levlist[[betlen+x]], each = nrow(dataset) * eachcue[x], 
 				times = timescue[x]), levels = levlist[[betlen+x]])))# 各被験者内要因の各水準を表すデータフレーム
 			dat <- cbind(dat, withlab)# データフレームに追加
 		}
@@ -736,11 +739,11 @@ ci.bars <- function(dat, design, factnames = NA, conf.level = 0.95, inn.tier = "
 	barcolor <- gray(0.5/flev[maxfact] * flev[maxfact]:1 + 0.45)
 
 	# グラフの描画
-	barplot(matrix(bstatist$Mean, prod(flev)/flev[maxfact], flev[maxfact]),
-		las = 2, space = betbars, tcl = 0.25, ylab = ylab,
-		ylim = c(pmin(barmin, floor(mMin/mcoef) * mcoef), ceiling(mMax/mcoef) * mcoef),
-		xlim = c(0.5, length(betbars) + (prod(flev)/flev[maxfact])^(1 * (sum(betbars) != 1)) + 1 * sum(betbars == 2)),
-		col = barcolor,
+	barplot(matrix(bstatist$Mean, prod(flev)/flev[maxfact], flev[maxfact]), 
+		las = 2, space = betbars, tcl = 0.25, ylab = ylab, 
+		ylim = c(pmin(barmin, floor(mMin/mcoef) * mcoef), ceiling(mMax/mcoef) * mcoef), 
+		xlim = c(0.5, length(betbars) + (prod(flev)/flev[maxfact])^(1 * (sum(betbars) != 1)) + 1 * sum(betbars == 2)), 
+		col = barcolor, 
 		xpd = FALSE, beside = TRUE)
 	box(bty = "l")# ｘ軸の線を引く
 	title(main, line = 0.8)# タイトルを書く
@@ -761,19 +764,19 @@ ci.bars <- function(dat, design, factnames = NA, conf.level = 0.95, inn.tier = "
 	}
 
 	# 凡例
-	legend(length(betbars) + sum(betbars) + 0.5, ceiling(mMax/mcoef) * mcoef,
-		legend = levels(bstatist[, maxfact]), cex = 0.9, x.intersp = 0.6, y.intersp = 1,
+	legend(length(betbars) + sum(betbars) + 0.5, ceiling(mMax/mcoef) * mcoef, 
+		legend = levels(bstatist[, maxfact]), cex = 0.9, x.intersp = 0.6, y.intersp = 1, 
 		pch = 22, pt.bg = barcolor, pt.cex = 1.6, # 条件の別を表すマークの設定
 		bty = "n")
 
 	# エラーバー
 	if(is.na(out.tier) == FALSE){# 外側エラーバーが指定されている場合
 		arrows(cumsum(betbars) + 1:prod(flev) - 0.5, bstatist[, paste0(toupper(out.tier), "-L")], # 外側エラーバー
-			cumsum(betbars) + 1:prod(flev) - 0.5, bstatist[, paste0(toupper(out.tier), "-U")],
+			cumsum(betbars) + 1:prod(flev) - 0.5, bstatist[, paste0(toupper(out.tier), "-U")], 
 			angle = 90, length = 0.04, code = 3, lwd = 2)
 	}
 	arrows(cumsum(betbars) + 1:prod(flev) - 0.5, bstatist[, paste0(toupper(inn.tier), "-L")], # 内側エラーバー
-		cumsum(betbars) + 1:prod(flev) - 0.5, bstatist[, paste0(toupper(inn.tier), "-U")],
+		cumsum(betbars) + 1:prod(flev) - 0.5, bstatist[, paste0(toupper(inn.tier), "-U")], 
 		angle = 90, length = 0.06, code = 3, lwd = 2)
 	par(preset)# グラフパラメータの設定を元に戻す
 }
@@ -815,17 +818,17 @@ expand.gmatrix <- function(...){
 
 # 有意水準に合わせて記号を表示する関数
 sig.sign <- function(pvalue){
-	ifelse(is.na(pvalue), "",
-	ifelse(pvalue < 0.001, "***",
-	ifelse(pvalue < 0.01, "**",
-	ifelse(pvalue < 0.05, "*",
+	ifelse(is.na(pvalue), "", 
+	ifelse(pvalue < 0.001, "***", 
+	ifelse(pvalue < 0.01, "**", 
+	ifelse(pvalue < 0.05, "*", 
 	ifelse(pvalue < 0.10, "+", "ns")))))
 }
 
 
 # Greenhouse-GeisserとHuynh-Feldtのイプシロンを計算する関数
 # 被験者内要因を含まない計画を投入すると適切に動作しないので注意
-epsilon.calc <- function(dat, design, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE, lb = FALSE, gg = FALSE, hf = FALSE,
+epsilon.calc <- function(dat, design, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE, lb = FALSE, gg = FALSE, hf = FALSE, 
 	cm = FALSE, autov = NULL, flev = NULL, cellN = NULL, esboot = FALSE){
 	maxfact <- nchar(design) - 1# 実験計画全体における要因数
 	spos <- match("s", strsplit(design, "")[[1]], nomatch = 0)
@@ -892,8 +895,6 @@ epsilon.calc <- function(dat, design, mau = FALSE, har = FALSE, iga = FALSE, cig
 		effect.name <- unlist(lapply(ctlframe, function(x) paste0(names(dat)[x], collapse = ":")))# 効果のラベルを作る
 		ss.name <- paste0(paste0(c("s", LETTERS[othlabel - 1]), collapse = ":"), ":", effect.name)
 
-#		<- apply(combmat, 1, function(x) paste0(LETTERS[(1:maxfact)[rev(x) == 1]], collapse = ":"))
-
 		# ラベルの追加
 		effect.name <- c("Global", effect.name)
 
@@ -944,8 +945,8 @@ epsilon.calc <- function(dat, design, mau = FALSE, har = FALSE, iga = FALSE, cig
 			if(any(min(othN) < gmd)){# 各群の被験者数が正規直交対比行列の行数を下回るときは妥当なカイ二乗値を計算できない
 				epsChi[min(othN) < gmd] <- NA
 				eps.Lambda[min(othN) < gmd] <- NA
-				epsi.info1 <- paste0(epsi.info1, "\n",
-					"*** CAUTION! The test of SPHERICITY is INVALID because of small sample size. ***", "\n",
+				epsi.info1 <- paste0(epsi.info1, "\n", 
+					"*** CAUTION! The test of SPHERICITY is INVALID because of small sample size. ***", "\n", 
 					"*** The minimum sample size for valid computation is N = ", max(gmd) + 1, " at each group. ***")
 			}
 
@@ -967,8 +968,8 @@ epsilon.calc <- function(dat, design, mau = FALSE, har = FALSE, iga = FALSE, cig
 			if(any(min(othN) < gmd)){# 各群の被験者数が正規直交対比行列の行数を下回るときは妥当なカイ二乗値を計算できない
 				epsChi[min(othN) < gmd] <- NA
 				eps.Lambda[min(othN) < gmd] <- NA
-				epsi.info1 <- paste0(epsi.info1, "\n",
-					"*** CAUTION! The test of SPHERICITY is INVALID because of small sample size. ***", "\n",
+				epsi.info1 <- paste0(epsi.info1, "\n", 
+					"*** CAUTION! The test of SPHERICITY is INVALID because of small sample size. ***", "\n", 
 					"*** The minimum sample size for valid computation is N = ", max(gmd) + 1, " at each group. ***")
 			}
 
@@ -977,17 +978,17 @@ epsilon.calc <- function(dat, design, mau = FALSE, har = FALSE, iga = FALSE, cig
 			eps.p6 <- pchisq(epsChi, eps.df + 6, lower.tail = FALSE)
 			eps.p4 <- pchisq(epsChi, eps.df + 4, lower.tail = FALSE)
 			eps.p2 <- pchisq(epsChi, eps.df + 2, lower.tail = FALSE)
-			eps.p <- pmax(0, eps.p0 + ((gmd^3 + 3 * gmd^2 - 8 * gmd - 12 - 200/gmd) * eps.p6 / 12
-				+ (-2 * gmd^3 - 5 * gmd^2 + 7 * gmd + 12 + 420/gmd) * eps.p4 / 8
-				+ (gmd^3 + 2 * gmd^2 - gmd - 2 - 216/gmd) * eps.p2 / 4
-				+ (-2 * gmd^3 - 3 * gmd^2 + gmd + 436/gmd) * eps.p0 / 24
+			eps.p <- pmax(0, eps.p0 + ((gmd^3 + 3 * gmd^2 - 8 * gmd - 12 - 200/gmd) * eps.p6 / 12 
+				+ (-2 * gmd^3 - 5 * gmd^2 + 7 * gmd + 12 + 420/gmd) * eps.p4 / 8 
+				+ (gmd^3 + 2 * gmd^2 - gmd - 2 - 216/gmd) * eps.p2 / 4 
+				+ (-2 * gmd^3 - 3 * gmd^2 + gmd + 436/gmd) * eps.p0 / 24 
 				) / (cellN - ol))
 		}else{# Mendozaの多標本球面性検定
 			# プロンプトの準備
 			epsi.info1 <- paste0("== Mendoza's Multisample Sphericity Test and Epsilons ==")
 			lamlab <- "Lambda"
 			proA <- lapply(totalM, function(x) lapply(1:ol, function(y) x %*% (othN[y] * covmatrices[[y]]) %*% t(x)))
-			eps.m <- 1 - ((((cellN-ol) * gmd^2 * (gmd + 1) * (2 * gmd + 1) - (2*(cellN-ol) * gmd^2)) *
+			eps.m <- 1 - ((((cellN-ol) * gmd^2 * (gmd + 1) * (2 * gmd + 1) - (2*(cellN-ol) * gmd^2)) * 
 				sum(1/(othN-1)) - 4) / (6 * (cellN-ol) * gmd * (ol * gmd * (gmd + 1) - 2)))
 			eps.m[is.nan(eps.m)] <- 0# NaNが出たところには０を代入
 
@@ -1002,8 +1003,8 @@ epsilon.calc <- function(dat, design, mau = FALSE, har = FALSE, iga = FALSE, cig
 			if(any(min(othN) < gmd)){# 各群の被験者数が正規直交対比行列の行数を下回るときは妥当なカイ二乗値を計算できない
 				epsChi[min(othN) < gmd] <- NA
 				eps.Lambda[min(othN) < gmd] <- NA
-				epsi.info1 <- paste0(epsi.info1, "\n",
-					"*** CAUTION! The test of SPHERICITY is INVALID because of small sample size. ***", "\n",
+				epsi.info1 <- paste0(epsi.info1, "\n", 
+					"*** CAUTION! The test of SPHERICITY is INVALID because of small sample size. ***", "\n", 
 					"*** The minimum sample size for valid computation is N = ", max(gmd) + 1, " at each group. ***")
 			}
 
@@ -1016,7 +1017,7 @@ epsilon.calc <- function(dat, design, mau = FALSE, har = FALSE, iga = FALSE, cig
 
 		# 結果をデータフレームにまとめる
 		sig.mark <- sig.sign(eps.p)
-		epsitab <- data.frame("Effect" = effect.name, "Dummy" = eps.Lambda, "approx.Chi" = epsChi, "df" = eps.df,
+		epsitab <- data.frame("Effect" = effect.name, "Dummy" = eps.Lambda, "approx.Chi" = epsChi, "df" = eps.df, 
 			"p" = eps.p, "sig.mark" = sig.mark, "LB" = LB.ep, "GG" = GG.ep, "HF" = HF.ep, "CM" = CM.ep)
 		names(epsitab)[2] <- lamlab# ラベルを検定方法に応じたものに変更
 	}
@@ -1061,10 +1062,10 @@ epsilon.calc <- function(dat, design, mau = FALSE, har = FALSE, iga = FALSE, cig
 			rmat <- lapply(flev, function(x) cbind(1, -1 * diag(x - 1)))# 行列パターン；効果に組み入れる場合に使う
 			rvec <- lapply(flev, function(x) array(1, c(1, x)))# ベクトルパターン；効果に組み入れない場合に使う
 			doubler <- list(rvec, rmat)
-			cmat <- lapply(1:nrow(factcomb), function(w) Reduce(f = kronecker, x = lapply(1:betlen, function(y)
+			cmat <- lapply(1:nrow(factcomb), function(w) Reduce(f = kronecker, x = lapply(1:betlen, function(y) 
 				doubler[[c(factcomb[w, y] + 1, y)]])))# 被験者間要因のデザイン行列
 			cmat <- c(list(array(rep(1, ol), c(1, ol))), cmat)# 被験者内要因のみの組み合わせに相当する部分のデザイン行列
-			iga.eta <- mapply(function(y, z) sum((othN - 1)^3 / ((othN + 1) * (othN - 2)) * (othN * y^2 - 2 * z)) +
+			iga.eta <- mapply(function(y, z) sum((othN - 1)^3 / ((othN + 1) * (othN - 2)) * (othN * y^2 - 2 * z)) + 
 				2 * sum(combn(ol, 2, function(x) prod((othN[x] - 1) * y[x]))), trDj, trDj2)
 			bw.df <- sapply(cmat, nrow)
 
@@ -1073,7 +1074,7 @@ epsilon.calc <- function(dat, design, mau = FALSE, har = FALSE, iga = FALSE, cig
 			iga.label <- c(setdiff(effect.name, wt.name), unlist(lapply(wt.name, function(x) c(x, paste(comblabel, x, sep = ":")))))
 		}
 
-		iga.G <- unlist(lapply(seportM, function(w) lapply(cmat, function(x) t(x) %*%
+		iga.G <- unlist(lapply(seportM, function(w) lapply(cmat, function(x) t(x) %*% 
 			qr.coef(qr(x %*% invXX %*% t(x), LAPACK = TRUE), diag(nrow(x))) %*% x %x% (t(w) %*% w))), recursive = FALSE)
 		rs <- sapply(seportM, function(w) sum((ssize-1) * sapply(vcv, function(x) sum(diag(w %*% x %*% t(w))))))
 		iga.GS <- lapply(iga.G, function(x) x %*% iga.Sigstr)
@@ -1091,27 +1092,27 @@ epsilon.calc <- function(dat, design, mau = FALSE, har = FALSE, iga = FALSE, cig
 		bwlen <- length(bw.df)
 		iga.e <- rep(iga.e, each = bwlen)
 		if(withlen == 1){# 被験者内要因が１つの場合
-			iga.ord <- order(c(seq(from = 1, by = bwlen, length.out = wtlen) - 0:(wtlen-1),
+			iga.ord <- order(c(seq(from = 1, by = bwlen, length.out = wtlen) - 0:(wtlen-1), 
 				seq(from = 1, length.out = wtlen * (bwlen - 1))))
 		}else{# 被験者内要因が２つ以上の場合
 			iga.m <- c(NA, iga.m)
 			iga.h <- c(NA, iga.h)
 			iga.al <- c(NA, iga.al)
 			iga.e <- c(NA, iga.e)
-			iga.ord <- c(0, order(c(seq(from = 1, by = bwlen, length.out = wtlen) - 0:(wtlen-1),
+			iga.ord <- c(0, order(c(seq(from = 1, by = bwlen, length.out = wtlen) - 0:(wtlen-1), 
 				seq(from = 1, length.out = wtlen * (bwlen - 1))))) + 1
 		}
 		if(iga){# IGA
 			epsi.info1 <- sub("Epsilons", "Estimates for IGA", epsi.info1)
-			epsitab <- data.frame("Effect" = iga.label, "Dummy" = c(eps.Lambda, iga.filler)[iga.ord],
-				"approx.Chi" = c(epsChi, iga.filler)[iga.ord], "df" = c(eps.df, iga.filler)[iga.ord],
-				"p" = c(eps.p, iga.filler)[iga.ord], "sig.mark" = c(sig.mark, iga.letfill)[iga.ord],
+			epsitab <- data.frame("Effect" = iga.label, "Dummy" = c(eps.Lambda, iga.filler)[iga.ord], 
+				"approx.Chi" = c(epsChi, iga.filler)[iga.ord], "df" = c(eps.df, iga.filler)[iga.ord], 
+				"p" = c(eps.p, iga.filler)[iga.ord], "sig.mark" = c(sig.mark, iga.letfill)[iga.ord], 
 				"multiplier" = iga.m, "adj.ndf" = iga.h, "adj.ddf" = iga.e)
 		}else{# CIGA
 			epsi.info1 <- sub("Epsilons", "Estimates for CIGA", epsi.info1)
-			epsitab <- data.frame("Effect" = iga.label, "Dummy" = c(eps.Lambda, iga.filler)[iga.ord],
-				"approx.Chi" = c(epsChi, iga.filler)[iga.ord], "df" = c(eps.df, iga.filler)[iga.ord],
-				"p" = c(eps.p, iga.filler)[iga.ord], "sig.mark" = c(sig.mark, iga.letfill)[iga.ord],
+			epsitab <- data.frame("Effect" = iga.label, "Dummy" = c(eps.Lambda, iga.filler)[iga.ord], 
+				"approx.Chi" = c(epsChi, iga.filler)[iga.ord], "df" = c(eps.df, iga.filler)[iga.ord], 
+				"p" = c(eps.p, iga.filler)[iga.ord], "sig.mark" = c(sig.mark, iga.letfill)[iga.ord], 
 				"multiplier" = iga.m, "adj.ndf" = iga.al, "adj.ddf" = iga.e)
 		}
 		names(epsitab)[2] <- lamlab# ラベルを検定方法に応じたものに変更
@@ -1182,7 +1183,7 @@ ss.calc <- function(dat, design, ss.errs = NA, type2 = FALSE, dmat = NULL, flev 
 	# 誤差平方和の計算
 	ss.Er <- promat[endline, endline] - sum(qr.coef(qr(promat[1:(endline-1), 1:(endline-1)], LAPACK = TRUE), promat[1:(endline-1), endline]) * promat[1:(endline-1), endline])
 
-	ss.results <- matrix(c(ss.all, ss.Er, ss.T, df.col, cellN - ol, nrow(dat) - 1), ncol = 2,
+	ss.results <- matrix(c(ss.all, ss.Er, ss.T, df.col, cellN - ol, nrow(dat) - 1), ncol = 2, 
 		dimnames = list(c(eff.elem, "Error", "Total"), c("ss.col", "df.col")))
 
 	if(!anyNA(ss.errs)){# 反復測定要因がある場合
@@ -1343,10 +1344,10 @@ qlambda.ncf <- function (Fratio, ndf, ddf, conf.level = 0.95, tol = 1e-09, JmpPr
 
 
 # 分散分析表を作る関数
-anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NULL, flev = NULL, cellN = NULL, full.elem = NA,
-	epsi.effect = NA, lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, autov = NULL, mau = FALSE, har = FALSE,
-	iga = FALSE, ciga = FALSE, eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE,
-	omegana = FALSE, pomega = FALSE, gomega = NA, gomegana = NA, prep = FALSE, nesci = FALSE, inter = NA, bet.mse = NULL,
+anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NULL, flev = NULL, cellN = NULL, full.elem = NA, 
+	epsi.effect = NA, lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, autov = NULL, mau = FALSE, har = FALSE, 
+	iga = FALSE, ciga = FALSE, eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, 
+	omegana = FALSE, pomega = FALSE, gomega = NA, gomegana = NA, prep = FALSE, nesci = FALSE, inter = NA, bet.mse = NULL, 
 	gss.qT = NA, post.esdenomis = NA, post.df.adj = NA, post.mse.adj = NA, esboot = FALSE, es.conf.level = 0.95){
 	maxfact <- nchar(design) - 1# 実験計画全体における要因数
 	spos <- match("s", strsplit(design, "")[[1]], nomatch = 0)
@@ -1375,7 +1376,7 @@ anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NUL
 		ano.info1 <- NULL
 	}else{# 反復測定要因を含む場合
 		# epsilon.calcの適用
-		epsiresults <- epsilon.calc(dat = dat, design = design, flev = flev, cellN = cellN, mau = mau, har = har,
+		epsiresults <- epsilon.calc(dat = dat, design = design, flev = flev, cellN = cellN, mau = mau, har = har, 
 			iga = iga, ciga = ciga, lb =lb, gg = gg, hf = hf, cm = cm, autov = autov, esboot = esboot)
 		epsi.info1 <- epsiresults$epsi.info1
 		epsitab <- epsiresults$epsitab
@@ -1457,7 +1458,7 @@ anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NUL
 		mfv <- c(rep(1, mse.row[1]), epsitab$multiplier[epsitab$Effect != "Global"], rep(NA, wenum))
 		mfv <- c(mfv[order(c(1:(length(mfv) - wenum), mse.row[-1] - (1:wenum)))], 1)
 
-		iga.df <- c(df.col[1:mse.row[1]], epsitab$adj.ndf[epsitab$Effect != "Global"],
+		iga.df <- c(df.col[1:mse.row[1]], epsitab$adj.ndf[epsitab$Effect != "Global"], 
 			epsitab$adj.ddf[epsitab$Effect != "Global"][seq(from = 1, by = mse.row[1], length.out = wenum)])
 		iga.df <- iga.df[order(c(1:(length(iga.df) - wenum), mse.row[-1] - (1:wenum)))]
 		iga.df <- append(iga.df, length(dat$y)-1)
@@ -1508,7 +1509,7 @@ anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NUL
 		esmat <- cbind(esmat, "p.eta^2" = peta.col)
 		esdenomis <- cbind(esdenomis, "peta" = ss.col + ss.col[f.denomi])
 		if(nesci){# 非心F分布に基づく信頼区間
-			peta.lambda <- qlambda.ncf(f.col[!is.na(f.denomi)], df.col[!is.na(f.denomi)],
+			peta.lambda <- qlambda.ncf(f.col[!is.na(f.denomi)], df.col[!is.na(f.denomi)], 
 					df.col[na.omit(f.denomi)], conf.level = es.conf.level)
 			lambda.lw <- pmax(0, peta.lambda$lower.limit, na.rm = TRUE)
 			lambda.up <- pmax(0, peta.lambda$upper.limit, na.rm = TRUE)
@@ -1661,7 +1662,7 @@ anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NUL
 		if(!is.null(bet.mse)){# 分母を引き継いでいる場合（被験者間計画の下位検定のみ）
 			omega.denomi <- post.esdenomis[match("omega", dimnames(post.esdenomis)[[2]])]
 		}else{
-			omega.denomi <- sum((ss.col - df.col * ms.col[f.denomi])[!is.na(f.denomi)]) + nrow(dat) * (sum(ss.col[mse.row])
+			omega.denomi <- sum((ss.col - df.col * ms.col[f.denomi])[!is.na(f.denomi)]) + nrow(dat) * (sum(ss.col[mse.row]) 
 				/ sum(df.col[mse.row]))
 		}
 		omega.col <- (ss.col - df.col * ms.col[f.denomi]) / omega.denomi
@@ -1698,7 +1699,7 @@ anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NUL
 			omegana.denomi <- sum((ss.col - df.col * ms.col[f.denomi])[!is.na(f.denomi)]) + sum(cellN * ms.col[mse.row])
 		}else{# その他の計画の場合
 			dflev <- flev[(betlen + 1):length(flev)]
-			omega.dummy <- cellN * c(1, unlist(sapply(1:length(dflev), function(y) combn(1:length(dflev), y, function(x)
+			omega.dummy <- cellN * c(1, unlist(sapply(1:length(dflev), function(y) combn(1:length(dflev), y, function(x) 
 				prod(dflev[x])))))
 			omegana.denomi <- sum((ss.col - df.col * ms.col[f.denomi])[!is.na(f.denomi)]) + sum(omega.dummy * ms.col[mse.row])
 		}
@@ -1741,12 +1742,12 @@ anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NUL
 			meas.row <- setdiff(na.omit(measfact), mse.row)# 誤差平方和を除く
 			measvec <- rep(1, eflen)
 			measvec[measfact] <- 0
-			gomega.denomi <- (measvec * (ss.col - df.col * ms.col[f.denomi]) + sum(ss.col[meas.row] - df.col[meas.row] *
+			gomega.denomi <- (measvec * (ss.col - df.col * ms.col[f.denomi]) + sum(ss.col[meas.row] - df.col[meas.row] * 
 				ms.col[f.denomi][meas.row]) + nrow(dat) * (sum(ss.col[mse.row])/sum(df.col[mse.row])))
 		}else{
 			meas.row <- 0
 			measvec <- 1
-			gomega.denomi <- (measvec * (ss.col - df.col * ms.col[f.denomi]) + sum(ss.col[meas.row] - df.col[meas.row] *
+			gomega.denomi <- (measvec * (ss.col - df.col * ms.col[f.denomi]) + sum(ss.col[meas.row] - df.col[meas.row] * 
 				ms.col[f.denomi][meas.row]) + nrow(dat) * (sum(ss.col[mse.row])/sum(df.col[mse.row])))
 		}
 		gomega.col <- (ss.col - df.col * ms.col[f.denomi]) / gomega.denomi
@@ -1821,7 +1822,7 @@ anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NUL
 	if(esboot){# ブートストラップ計算の場合には効果量のみ返す
 		if(is.na(inter)){# 主分析の場合
 			eslist <- as.vector(esmat[-c(mse.row, length(df.col)), ])
-			return(list("eslist" = eslist, "bet.mse" = c(NA, sum(ss.col[mse.row]), sum(df.col[mse.row])),
+			return(list("eslist" = eslist, "bet.mse" = c(NA, sum(ss.col[mse.row]), sum(df.col[mse.row])), 
 				"ss.qT" = ss.qT, "esdenomis" = esdenomis))
 		}else{# 単純主効果の検定の場合
 			eslist <- as.vector(esmat[charmatch(inter, internal.lab), ])
@@ -1839,8 +1840,8 @@ anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NUL
 			if(nesci){# 非心F分布に基づく効果量の信頼区間を算出した場合
 				fcomlen <- sum(choose(maxfact, 1:maxfact))
 				nesci.info1 <- c("=== Noncentral F Distribution-Based Confidence Intervals for Effect Sizes ===", paste0("=== ", 100 * es.conf.level, "% confidence intervals are calculated. ==="))
-				nescitab <- data.frame("ES" = rep(dimnames(esmat)[[2]], each = sum(!is.na(f.col))),
-					"Source" = source.col[-c(mse.row, length(source.col))], "Estimate" = as.vector(esmat[!is.na(f.col), ]),
+				nescitab <- data.frame("ES" = rep(dimnames(esmat)[[2]], each = sum(!is.na(f.col))), 
+					"Source" = source.col[-c(mse.row, length(source.col))], "Estimate" = as.vector(esmat[!is.na(f.col), ]), 
 					"CI_L" = escilw, "CI_U" = esciup, "ncp_L" = ncplw, "ncp_U" = ncpup, row.names = NULL)
 				if(withlen > 0){# 反復測定要因を含む場合
 					nesci.info1 <- c(nesci.info1, "*** CAUTION! Non-central parameters are not estimated for repeated-measures effects because their distributions are unknown. ***")
@@ -1855,9 +1856,9 @@ anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NUL
 		}
 		if(is.na(inter)){# interに入力がない場合はanovatabとmse.rowを返す
 			if(withlen > 0) epsitab$Effect <- epsi.effect[(2 * sum(withlen == 1)):length(epsi.effect)]# 一要因の場合のみ“Global”を省略
-			return(list("epsi.info1" = epsi.info1, "epsitab" = epsitab, "ano.info1" = ano.info1, "anovatab" = anovatab,
-				"mse.row" = mse.row, "internal.lab" = internal.lab, "dmat" = sres$dmat, "flev" = flev, "cellN" = cellN,
-				"full.elem" = full.elem, "epsi.effect" = epsi.effect, "nesci.info1" = nesci.info1, "nescitab" = nescitab,
+			return(list("epsi.info1" = epsi.info1, "epsitab" = epsitab, "ano.info1" = ano.info1, "anovatab" = anovatab, 
+				"mse.row" = mse.row, "internal.lab" = internal.lab, "dmat" = sres$dmat, "flev" = flev, "cellN" = cellN, 
+				"full.elem" = full.elem, "epsi.effect" = epsi.effect, "nesci.info1" = nesci.info1, "nescitab" = nescitab, 
 				"esdenomis" = esdenomis, "es.df.adjs" = es.df.adjs, "es.mse.adjs" = es.mse.adjs))
 		}else{# 単純主効果の場合はintertabを返す
 			# 単純主効果の検定用の出力を用意する
@@ -1876,7 +1877,7 @@ anova.modeler <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NUL
 			}else{
 				interepsi <- epsitab[charmatch(inter, epsitab$Effect), ]
 			}
-			return(list("intertab" = intertab, "interepsi" = interepsi, "internal.lab" = internal.lab,
+			return(list("intertab" = intertab, "interepsi" = interepsi, "internal.lab" = internal.lab, 
 				"dmat" = sres$dmat, "flev" = flev, "cellN" = cellN, "nescitab" = nescitab))
 		}
 	}
@@ -1973,10 +1974,10 @@ wj.calc <- function(dat, design, pairwise = NA){
 	# 出力をデータフレームにまとめる
 	if(is.na(pairwise)){
 		pvals <- pf(adf.T/adf.cvals, adf.df1, adf.df2, lower.tail = FALSE)
-		wjtab <- data.frame("Source" = comblabel, "approx.F" = adf.T/adf.cvals, "df1" = adf.df1,
+		wjtab <- data.frame("Source" = comblabel, "approx.F" = adf.T/adf.cvals, "df1" = adf.df1, 
 			"df2" = adf.df2, "p.value" = pvals, "sig.col" = sig.sign(pvals))
 	}else{
-		wjtab <- data.frame("pair" = bon.name, "t" = sqrt(adf.T/adf.cvals), "df" = adf.df2,
+		wjtab <- data.frame("pair" = bon.name, "t" = sqrt(adf.T/adf.cvals), "df" = adf.df2, 
 			"p.value" = pt(sqrt(adf.T/adf.cvals), adf.df2, lower.tail = FALSE) * 2)
 	}
 	return(wjtab)
@@ -1986,7 +1987,7 @@ wj.calc <- function(dat, design, pairwise = NA){
 # 修正Bonferroniの方法（Holmの方法，Shafferの方法，Holland-Copenhaverの方法）による多重比較を行う関数
 # デフォルトはShafferの方法を適用し，holm = TとするとHolmの方法，hc = TとするとHolland-Copenhaverの方法を適用する
 # s2r = T，s2d = Tとすると，具体的な棄却のパターンを反映した有意水準の調整によるShafferの方法を適用する
-mod.Bon <- function(dat, design, taref, bet.mse = NA, factlabel = NA, factnames = NA, type2 = FALSE, holm = FALSE, hc = FALSE,
+mod.Bon <- function(dat, design, taref, bet.mse = NA, factlabel = NA, factnames = NA, type2 = FALSE, holm = FALSE, hc = FALSE, 
 	s2r = FALSE, s2d = FALSE, fs1 = FALSE, fs2r = FALSE, fs2d = FALSE, welch = FALSE, alpha = 0.05, criteria = FALSE){
 	# factnamesが省略されているときは名前をつける
 	if(anyNA(factnames)) factnames <- LETTERS[1:(nchar(design)-1)]
@@ -2035,7 +2036,7 @@ mod.Bon <- function(dat, design, taref, bet.mse = NA, factlabel = NA, factnames 
 			for(i in 1:length(subdat)){
 				subdat[[i]][, taref] <- subdat[[i]][, taref][, drop = TRUE]
 			}
-			bon.anova <- lapply(subdat, function(x) anova.modeler(dat = x, design = design, factnames = factnames, type2 = type2,
+			bon.anova <- lapply(subdat, function(x) anova.modeler(dat = x, design = design, factnames = factnames, type2 = type2, 
 				inter = taref)$intertab[2, ])
 			bon.df <- sapply(bon.anova, function(x) x$df.col)# 自由度
 			bon.Ve <- sapply(bon.anova, function(x) x$ms.col)
@@ -2131,12 +2132,12 @@ mod.Bon <- function(dat, design, taref, bet.mse = NA, factlabel = NA, factnames 
 
 		if(s2d){
 			p.criteria <- shaf.value# Shafferの方法用の調整値
-			bon.info1 <- paste0("== Shaffer's Modified Sequentially Rejective Bonferroni Procedure [SPECIFIC] ==", "\n",
+			bon.info1 <- paste0("== Shaffer's Modified Sequentially Rejective Bonferroni Procedure [SPECIFIC] ==", "\n", 
 				"== This computation is based on the algorithm by Donoghue (2004). ==")
 			shaf.meth <- paste0(" [SPECIFIC] ==", "\n", "== This computation is based on the algorithm by Donoghue (2004). ==")
 		}else{
 			p.criteria <- c(shaf.value[2], shaf.value[2:length(shaf.value)])# F-Shafferの方法用の調整値
-			bon.info1 <- paste0("== Shaffer's F-Modified Sequentially Rejective Bonferroni Procedure [SPECIFIC] ==", "\n",
+			bon.info1 <- paste0("== Shaffer's F-Modified Sequentially Rejective Bonferroni Procedure [SPECIFIC] ==", "\n", 
 				"== This computation is based on the algorithm by Donoghue (2004). ==")
 			shaf.meth <- paste0(" [SPECIFIC] ==", "\n", "== This computation is based on the algorithm by Donoghue (2004). ==")
 		}
@@ -2223,10 +2224,10 @@ mod.Bon <- function(dat, design, taref, bet.mse = NA, factlabel = NA, factnames 
 
 
 # 下位検定を行う関数
-post.analyses <- function(dat, design, factnames = NA, mainresults, type2 = FALSE, nopost = FALSE, holm = FALSE, hc = FALSE,
-	s2r = FALSE, s2d = FALSE, fs1 = FALSE, fs2r = FALSE, fs2d = FALSE, welch = FALSE, criteria = FALSE,
-	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE,
-	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE,
+post.analyses <- function(dat, design, factnames = NA, mainresults, type2 = FALSE, nopost = FALSE, holm = FALSE, hc = FALSE, 
+	s2r = FALSE, s2d = FALSE, fs1 = FALSE, fs2r = FALSE, fs2d = FALSE, welch = FALSE, criteria = FALSE, 
+	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE, 
+	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE, 
 	gomega = NA, gomegana = NA, prep = FALSE, nesci = FALSE){
 	anovatab <- mainresults$anovatab
 	internal.lab <- mainresults$internal.lab
@@ -2240,11 +2241,11 @@ post.analyses <- function(dat, design, factnames = NA, mainresults, type2 = FALS
 		return(NA)# 有意な行が存在しないか，nopostオプションが指定されている場合はここで終了
 	}else{
 		# pro.fraction関数を反復適用
-		postresults <- lapply(sig.source, function(x) pro.fraction(dat = dat, design = design, factnames = factnames,
-			postplan = x, bet.with = bet.with, mainresults = mainresults, type2 = type2, holm = holm, hc = hc, s2r = s2r,
-			s2d = s2d, fs1 = fs1, fs2r = fs2r, fs2d = fs2d, welch = welch, criteria = criteria, lb = lb, gg = gg, hf = hf,
-			cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta, eps = eps,
-			peps = peps, geps = geps, omega = omega, omegana = omegana, pomega = pomega, gomega = gomega, gomegana = gomegana,
+		postresults <- lapply(sig.source, function(x) pro.fraction(dat = dat, design = design, factnames = factnames, 
+			postplan = x, bet.with = bet.with, mainresults = mainresults, type2 = type2, holm = holm, hc = hc, s2r = s2r, 
+			s2d = s2d, fs1 = fs1, fs2r = fs2r, fs2d = fs2d, welch = welch, criteria = criteria, lb = lb, gg = gg, hf = hf, 
+			cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta, eps = eps, 
+			peps = peps, geps = geps, omega = omega, omegana = omegana, pomega = pomega, gomega = gomega, gomegana = gomegana, 
 			prep = prep, nesci = nesci))
 		names(postresults) <- sig.source
 
@@ -2254,10 +2255,10 @@ post.analyses <- function(dat, design, factnames = NA, mainresults, type2 = FALS
 
 
 # 効果のタイプに適した下位検定を割り当てる関数
-pro.fraction <- function(dat, design, factnames = NA, postplan, bet.with, mainresults, type2 = FALSE, holm = FALSE, hc = FALSE,
-	s2r = FALSE, s2d = FALSE, fs1 = FALSE, fs2r = FALSE, fs2d = FALSE, welch = FALSE, criteria = FALSE,
-	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE,
-	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE,
+pro.fraction <- function(dat, design, factnames = NA, postplan, bet.with, mainresults, type2 = FALSE, holm = FALSE, hc = FALSE, 
+	s2r = FALSE, s2d = FALSE, fs1 = FALSE, fs2r = FALSE, fs2d = FALSE, welch = FALSE, criteria = FALSE, 
+	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE, 
+	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE, 
 	gomega = NA, gomegana = NA, prep = FALSE, nesci = FALSE, esboot = FALSE){
 	# 情報の展開
 	anovatab <- mainresults$anovatab
@@ -2287,7 +2288,7 @@ pro.fraction <- function(dat, design, factnames = NA, postplan, bet.with, mainre
 		rtargetnm <- sort(targetnm, decreasing = TRUE)# 逆順にしたもの
 		desnm <- c(betlen, withlen)# オリジナルのデザインの被験者間・被験者内の要因数
 		sublevn <- lapply(LETTERS[rtargetnm], function(x) desnm - diag(2)[grep(x, bet.with), ])# 単純主効果の検定での被験者間・被験者内の要因数
-		subdesign <- sapply(sublevn, function(x) paste0(paste0(LETTERS[min(1, x[1]):x[1]], collapse = ""), "s",
+		subdesign <- sapply(sublevn, function(x) paste0(paste0(LETTERS[min(1, x[1]):x[1]], collapse = ""), "s", 
 			paste0(LETTERS[(x[2] != 0) * (x[1]+1):sum(x)], collapse = "")))# 単純主効果の検定のデザイン
 		subdesign <- rep(subdesign, flev[rtargetnm])# ターゲット要因の水準数だけ繰り返す
 
@@ -2319,11 +2320,11 @@ pro.fraction <- function(dat, design, factnames = NA, postplan, bet.with, mainre
 			}
 
 			# 検定の実行
-			sim.effects <- lapply(1:simtimes, function(x) anova.modeler(dat = subdat[[x]], design = subdesign[x],
-				factnames = factnames[-nmline[x]], type2 = type2, eta = eta, peta = peta, geta = geta, eps = eps,
-				peps = peps, geps = geps, omega = omega, omegana = omegana, pomega = pomega, gomega = gomega, gomegana = gomegana,
-				prep = prep, nesci = nesci, inter = interlab[x], bet.mse = bet.mse, gss.qT = gss.qT,
-				post.esdenomis = post.esdenomis[x, , drop = FALSE], post.df.adj = post.df.adj[x, , drop = FALSE],
+			sim.effects <- lapply(1:simtimes, function(x) anova.modeler(dat = subdat[[x]], design = subdesign[x], 
+				factnames = factnames[-nmline[x]], type2 = type2, eta = eta, peta = peta, geta = geta, eps = eps, 
+				peps = peps, geps = geps, omega = omega, omegana = omegana, pomega = pomega, gomega = gomega, gomegana = gomegana, 
+				prep = prep, nesci = nesci, inter = interlab[x], bet.mse = bet.mse, gss.qT = gss.qT, 
+				post.esdenomis = post.esdenomis[x, , drop = FALSE], post.df.adj = post.df.adj[x, , drop = FALSE], 
 				post.mse.adj = post.mse.adj[x, , drop = FALSE]))
 			simtab <- do.call(rbind, lapply(sim.effects, function(x) x$intertab))
 			simepsi <- do.call(rbind, lapply(sim.effects, function(x) x$interepsi))
@@ -2343,10 +2344,10 @@ pro.fraction <- function(dat, design, factnames = NA, postplan, bet.with, mainre
 			sim.bet.mse <- replicate(simeflen, bet.mse, simplify = FALSE)
 		}else{# 反復測定要因を含む場合
 			# 検定の実行
-			sim.effects <- lapply(1:simtimes, function(x) anova.modeler(dat = subdat[[x]], design = subdesign[x],
-				factnames = factnames[-nmline[x]], type2 = type2, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto,
-				mau = mau, har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta, eps = eps, peps = peps,
-				geps = geps, omega = omega, omegana = omegana, pomega = pomega, gomega = gomega, gomegana = gomegana,
+			sim.effects <- lapply(1:simtimes, function(x) anova.modeler(dat = subdat[[x]], design = subdesign[x], 
+				factnames = factnames[-nmline[x]], type2 = type2, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, 
+				mau = mau, har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, 
+				geps = geps, omega = omega, omegana = omegana, pomega = pomega, gomega = gomega, gomegana = gomegana, 
 				prep = prep, nesci = nesci, inter = interlab[x]))
 			simtab <- do.call(rbind, lapply(sim.effects, function(x) x$intertab))
 			simepsi <- do.call(rbind, lapply(sim.effects, function(x) x$interepsi))
@@ -2387,8 +2388,8 @@ pro.fraction <- function(dat, design, factnames = NA, postplan, bet.with, mainre
 		sim.sncol <- as.vector(tapply(dat$y, dat[, rtargetnm + 1], length))# セルごとのデータ数を計算
 		sim.mncol <- as.vector(tapply(dat$y, dat[, rtargetnm + 1], mean))# セルごとの平均を計算
 		sim.sdcol <- as.vector(tapply(dat$y, dat[, rtargetnm + 1], sd))# セルごとの標準偏差を計算
-		sim.stat <- data.frame("Term1" = rep(levels(dat[, targetnm[1] + 1]), each = flev[rtargetnm[1]]),
-			"Term2" = rep(levels(dat[, targetnm[2] + 1]), flev[rtargetnm[2]]), "n" = sim.sncol,
+		sim.stat <- data.frame("Term1" = rep(levels(dat[, targetnm[1] + 1]), each = flev[rtargetnm[1]]), 
+			"Term2" = rep(levels(dat[, targetnm[2] + 1]), flev[rtargetnm[2]]), "n" = sim.sncol, 
 			"Mean" = sim.mncol, "S.D." = sim.sdcol)
 
 		# 行ラベルの張り替え
@@ -2402,9 +2403,9 @@ pro.fraction <- function(dat, design, factnames = NA, postplan, bet.with, mainre
 		if(sum(sim.sig.col) == 0){
 			sim.multresults <- NA# 有意な行がない場合はNAを代入
 		}else{
-			sim.multresults <- lapply((1:length(sim.sig.col))[sim.sig.col], function(x) mod.Bon(dat = subdat[[x]],
-				design = subdesign[x], taref = interlab[x], bet.mse = sim.bet.mse[[x]], factlabel = sim.sig.lab[x],
-				factnames = factnames[-nmline[x]], type2 = type2, holm = holm, hc = hc, s2r = s2r, s2d = s2d,
+			sim.multresults <- lapply((1:length(sim.sig.col))[sim.sig.col], function(x) mod.Bon(dat = subdat[[x]], 
+				design = subdesign[x], taref = interlab[x], bet.mse = sim.bet.mse[[x]], factlabel = sim.sig.lab[x], 
+				factnames = factnames[-nmline[x]], type2 = type2, holm = holm, hc = hc, s2r = s2r, s2d = s2d, 
 				fs1 = fs1, fs2r = fs2r, fs2d = fs2d, welch = welch, criteria = criteria))
 		}
 
@@ -2436,8 +2437,8 @@ pro.fraction <- function(dat, design, factnames = NA, postplan, bet.with, mainre
 			}else{
 				bet.mse <- NA
 			}
-			bonout <- mod.Bon(dat = dat, design = design, taref = sig.term, bet.mse = bet.mse, factlabel = sig.source,
-				factnames = factnames, type2 = type2, holm = holm, hc = hc, s2r = s2r, s2d = s2d, fs1 = fs1, fs2r = fs2r,
+			bonout <- mod.Bon(dat = dat, design = design, taref = sig.term, bet.mse = bet.mse, factlabel = sig.source, 
+				factnames = factnames, type2 = type2, holm = holm, hc = hc, s2r = s2r, s2d = s2d, fs1 = fs1, fs2r = fs2r, 
 				fs2d = fs2d, welch = welch, criteria = criteria)
 			return(bonout)
 		}else{
@@ -2449,9 +2450,9 @@ pro.fraction <- function(dat, design, factnames = NA, postplan, bet.with, mainre
 
 # ブートストラップ法に基づいて効果量の信頼区間を計算する関数
 # BCa法に基づく
-boot.esci <- function(dat, design, factnames = NA, type2 = FALSE, nopost = FALSE, mainresults = NULL, postresults = NULL,
-	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE,
-	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE,
+boot.esci <- function(dat, design, factnames = NA, type2 = FALSE, nopost = FALSE, mainresults = NULL, postresults = NULL, 
+	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE, 
+	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE, 
 	gomega = NA, gomegana = NA, prep = FALSE, interim = FALSE, B = 2000, conf.level = 0.95){
 	# 効果量が指定されていない場合
 	if(sum(c(eta, peta, geta, eps, peps, geps, omega, omegana, pomega, gomega, gomegana), na.rm = TRUE) == 0){
@@ -2470,15 +2471,15 @@ boot.esci <- function(dat, design, factnames = NA, type2 = FALSE, nopost = FALSE
 
 	# 標本による結果の取得
 	if(is.null(mainresults)){
-		mainresults <- anova.modeler(dat = dat, design = design, factnames = factnames, type2 = type2,
-			lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga,
-			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana,
+		mainresults <- anova.modeler(dat = dat, design = design, factnames = factnames, type2 = type2, 
+			lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga, 
+			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, 
 			pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep)
 	}
 	if(is.null(postresults)){
-		postresults <- post.analyses(dat = dat, design = design, factnames = factnames, mainresults = mainresults, type2 = type2,
-			nopost = nopost, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga,
-			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana,
+		postresults <- post.analyses(dat = dat, design = design, factnames = factnames, mainresults = mainresults, type2 = type2, 
+			nopost = nopost, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, mau = mau, har = har, iga = iga, ciga = ciga, 
+			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, 
 			pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep)
 	}
 	eslen <- ncol(mainresults$anovatab) - 7# 指定された効果量の数
@@ -2509,9 +2510,9 @@ boot.esci <- function(dat, design, factnames = NA, type2 = FALSE, nopost = FALSE
 		sim.cellN <- lapply(int.sig.source, function(x) postresults[[x]]$sim.cellN)
 		postype <- lapply(int.sig.source, function(x) sum(is.na(postresults[[x]]$simepsi)) == 1)# 被験者間効果にはTRUE
 		simtabs <- lapply(int.sig.source, function(x) postresults[[x]]$simtab)# 分散分析表を取り出す
-		simsource <- mapply(function(x, y){if(x) y[-nrow(y), 1]
+		simsource <- mapply(function(x, y){if(x) y[-nrow(y), 1] 
 			else y[-(2 * 1:(nrow(y)/2)), 1]}, postype, simtabs, SIMPLIFY = FALSE)
-		es.sims <- unlist(mapply(function(x, y){if(x) y[-nrow(y), -(1:7)]
+		es.sims <- unlist(mapply(function(x, y){if(x) y[-nrow(y), -(1:7)] 
 			else y[-(2 * 1:(nrow(y)/2)), -(1:7)]}, postype, simtabs, SIMPLIFY = FALSE))
 		es.sims <- array(es.sims, c(length(es.sims), 1))
 		es.sample <- rbind(es.sample, es.sims)
@@ -2538,16 +2539,16 @@ boot.esci <- function(dat, design, factnames = NA, type2 = FALSE, nopost = FALSE
 	dpart <- dat[, -(maxfact+2)]
 
 	# ブートストラップ処理
-	bootdat <- lapply(1:B, function(w) cbind(dpart, y = dat$y[as.vector(do.call(rbind, lapply(gmat, function(x) x[sample(nrow(x),
+	bootdat <- lapply(1:B, function(w) cbind(dpart, y = dat$y[as.vector(do.call(rbind, lapply(gmat, function(x) x[sample(nrow(x), 
 		replace = TRUE), , drop = FALSE])))]))
 	stm <- Sys.time()# ブートストラップの開始時間
 	if(.Platform$GUI == "Rgui"){# WindowsのRguiの場合（プログレスバーなし）
 		bootresults <- do.call(cbind, lapply(1:B, function(v) {
-			boot.anova(dat = bootdat[[v]], design = design, factnames = factnames, type2 = type2, dmat = dmat, flev = flev,
-				cellN = cellN, full.elem = full.elem, epsi.effect = epsi.effect, internal.lab = internal.lab,
-				int.sig.source = int.sig.source, sim.dmat = sim.dmat, sim.flev = sim.flev, sim.cellN = sim.cellN,
-				lb = lb, gg = gg, hf = hf, cm = cm, autov = autov, mau = mau, har = har, iga = iga, ciga = ciga,
-				eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana,
+			boot.anova(dat = bootdat[[v]], design = design, factnames = factnames, type2 = type2, dmat = dmat, flev = flev, 
+				cellN = cellN, full.elem = full.elem, epsi.effect = epsi.effect, internal.lab = internal.lab, 
+				int.sig.source = int.sig.source, sim.dmat = sim.dmat, sim.flev = sim.flev, sim.cellN = sim.cellN, 
+				lb = lb, gg = gg, hf = hf, cm = cm, autov = autov, mau = mau, har = har, iga = iga, ciga = ciga, 
+				eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, 
 				pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep)
 			}))
 		cat("\n", as.numeric(Sys.time() - stm, units = "secs"), " secs elapsed for bootstrapping.", "\n", "\n", sep = "")
@@ -2555,21 +2556,21 @@ boot.esci <- function(dat, design, factnames = NA, type2 = FALSE, nopost = FALSE
 		cat("Now Bootstrapping...", "\n")
 		bootresults <- do.call(cbind, lapply(1:B, function(v) {
 			if(v %% (B/20) == 0) cat("|", rep("=", ceiling(v/(B/50))), rep(" ", 50 - ceiling(v/(B/50))), "| ", 2 * v/(B/50), "%", "\n", sep = "");
-			boot.anova(dat = bootdat[[v]], design = design, factnames = factnames, type2 = type2, dmat = dmat, flev = flev,
-				cellN = cellN, full.elem = full.elem, epsi.effect = epsi.effect, internal.lab = internal.lab,
-				int.sig.source = int.sig.source, sim.dmat = sim.dmat, sim.flev = sim.flev, sim.cellN = sim.cellN,
-				lb = lb, gg = gg, hf = hf, cm = cm, autov = autov, mau = mau, har = har, iga = iga, ciga = ciga,
-				eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana,
+			boot.anova(dat = bootdat[[v]], design = design, factnames = factnames, type2 = type2, dmat = dmat, flev = flev, 
+				cellN = cellN, full.elem = full.elem, epsi.effect = epsi.effect, internal.lab = internal.lab, 
+				int.sig.source = int.sig.source, sim.dmat = sim.dmat, sim.flev = sim.flev, sim.cellN = sim.cellN, 
+				lb = lb, gg = gg, hf = hf, cm = cm, autov = autov, mau = mau, har = har, iga = iga, ciga = ciga, 
+				eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, 
 				pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep)
 			}))
 		cat("\n", "Completed! ", as.numeric(Sys.time() - stm, units = "secs"), " secs elapsed.", "\n", "\n", sep = "")
 	}
 
 	# ジャックナイフ処理
-	jkresults <- do.call(cbind, lapply(uniq.s, function(x) boot.anova(dat = dat[dat$s != x, ], design = design,
-		factnames = factnames, type2 = type2, flev = flev, cellN = cellN-1, full.elem = full.elem, epsi.effect = epsi.effect,
-		internal.lab = internal.lab, int.sig.source = int.sig.source, lb = lb, gg = gg, hf = hf, cm = cm, autov = autov,
-		mau = mau, har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps,
+	jkresults <- do.call(cbind, lapply(uniq.s, function(x) boot.anova(dat = dat[dat$s != x, ], design = design, 
+		factnames = factnames, type2 = type2, flev = flev, cellN = cellN-1, full.elem = full.elem, epsi.effect = epsi.effect, 
+		internal.lab = internal.lab, int.sig.source = int.sig.source, lb = lb, gg = gg, hf = hf, cm = cm, autov = autov, 
+		mau = mau, har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, 
 		omega = omega, omegana = omegana, pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep)))
 	jkmeans <- rowMeans(jkresults, na.rm = TRUE)
 
@@ -2580,12 +2581,12 @@ boot.esci <- function(dat, design, factnames = NA, type2 = FALSE, nopost = FALSE
 	bca.ci.up <- pnorm(bca.z0 + (bca.z0 + qnorm((1 + conf.level)/2)) / (1 - bca.a * (bca.z0 + qnorm((1 + conf.level)/2))))
 
 	# 出力にまとめる
-	bescitab <- data.frame("ES" = eslab, "Source" = sourcelab, "Observed" = es.sample,
-		"CI_L" = sapply(1:length(bca.ci.low), function(x) quantile(bootresults[x, ], bca.ci.low[x], na.rm = TRUE)),
-		"CI_U" = sapply(1:length(bca.ci.up), function(x) quantile(bootresults[x, ], bca.ci.up[x], na.rm = TRUE)),
+	bescitab <- data.frame("ES" = eslab, "Source" = sourcelab, "Observed" = es.sample, 
+		"CI_L" = sapply(1:length(bca.ci.low), function(x) quantile(bootresults[x, ], bca.ci.low[x], na.rm = TRUE)), 
+		"CI_U" = sapply(1:length(bca.ci.up), function(x) quantile(bootresults[x, ], bca.ci.up[x], na.rm = TRUE)), 
 		"Bias" = rowMeans(bootresults, na.rm = TRUE) - es.sample, "S.E." = apply(bootresults, 1, sd), row.names = NULL)
 	bescitab <- split(bescitab, rep(1:length(essamlen), eslen * essamlen))
-	besci.info1 <- c("=== Bias-Corrected and Accelerated (BCa) Confidence Intervals for ESs ===",
+	besci.info1 <- c("=== Bias-Corrected and Accelerated (BCa) Confidence Intervals for ESs ===", 
 		paste0("=== ", 100 * conf.level, "% confidence intervals based on ", B, " replications ==="))
 	minN <- min(table(dat[, 2:(maxfact+1)]))
 	if(minN < 5){# サンプルサイズが小さすぎる場合に警告
@@ -2603,10 +2604,10 @@ boot.esci <- function(dat, design, factnames = NA, type2 = FALSE, nopost = FALSE
 
 # 主分析と単純主効果の検定の効果量を一括して計算する関数
 # 必須変数：dat，design，internal.lab，int.sig.source，少なくともひとつの効果量の指標
-boot.anova <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NULL, flev = NULL, cellN = NULL, full.elem = NA,
-	epsi.effect = NA, sim.dmat = NULL, sim.flev = NULL, sim.cellN = NULL, mainresults = NA, postresults = NA, internal.lab = NA,
-	int.sig.source = NA, lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, autov = NULL, mau = FALSE, har = FALSE,
-	iga = FALSE, ciga = FALSE, eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE,
+boot.anova <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NULL, flev = NULL, cellN = NULL, full.elem = NA, 
+	epsi.effect = NA, sim.dmat = NULL, sim.flev = NULL, sim.cellN = NULL, mainresults = NA, postresults = NA, internal.lab = NA, 
+	int.sig.source = NA, lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, autov = NULL, mau = FALSE, har = FALSE, 
+	iga = FALSE, ciga = FALSE, eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, 
 	omegana = FALSE, pomega = FALSE, gomega = NA, gomegana = NA, prep = FALSE){
 	bet.with <- strsplit(design, "s")[[1]]
 	maxfact <- nchar(design) - 1
@@ -2615,17 +2616,17 @@ boot.anova <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NULL, 
 	withlen <- maxfact - spos + 1# 被験者内要因の数
 	if(is.null(flev)) flev <- sapply(2:nchar(design), function(x) length(unique(dat[, x])))# 各要因の水準数
 
-	esmain <- anova.modeler(dat = dat, design = design, factnames = factnames, type2 = type2, dmat = dmat, flev = flev, cellN = cellN,
-		full.elem = full.elem, epsi.effect = epsi.effect, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, autov = autov[[1]],
-		mau = mau, har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps,
+	esmain <- anova.modeler(dat = dat, design = design, factnames = factnames, type2 = type2, dmat = dmat, flev = flev, cellN = cellN, 
+		full.elem = full.elem, epsi.effect = epsi.effect, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, autov = autov[[1]], 
+		mau = mau, har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, 
 		omega = omega, omegana = omegana, pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep, esboot = TRUE)
 
 	if(length(int.sig.source) > 0){# 検討したい単純主効果がある場合
-		esposts <- lapply(1:length(int.sig.source), function(x) boot.inter(dat = dat, design = design, factnames = factnames,
-			sig.term = int.sig.source[x], bet.with = bet.with, esmain = esmain, type2 = type2, flev = flev,
-			sim.dmat = sim.dmat[[x]], sim.flev = sim.flev[[x]], sim.cellN = sim.cellN[[x]], internal.lab = internal.lab,
-			lb = lb, gg = gg, hf = hf, cm = cm, autov = autov[[x+1]], mau = mau, har = har, iga = iga, ciga = ciga,
-			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana,
+		esposts <- lapply(1:length(int.sig.source), function(x) boot.inter(dat = dat, design = design, factnames = factnames, 
+			sig.term = int.sig.source[x], bet.with = bet.with, esmain = esmain, type2 = type2, flev = flev, 
+			sim.dmat = sim.dmat[[x]], sim.flev = sim.flev[[x]], sim.cellN = sim.cellN[[x]], internal.lab = internal.lab, 
+			lb = lb, gg = gg, hf = hf, cm = cm, autov = autov[[x+1]], mau = mau, har = har, iga = iga, ciga = ciga, 
+			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, 
 			pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep))
 	}else{# 検討したい単純主効果がない場合
 		esposts <- NULL
@@ -2637,10 +2638,10 @@ boot.anova <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NULL, 
 
 
 # 単純主効果の検定の効果量のみを計算する関数
-boot.inter <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NULL, flev = NULL, cellN = NULL, full.elem = NA, epsi.effect = NA,
-	sim.dmat = NULL, sim.flev = NULL, sim.cellN = NULL, esmain = NA, sig.term = NA, bet.with = NA, internal.lab = NA,
-	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, autov = autov, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE,
-	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE,
+boot.inter <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NULL, flev = NULL, cellN = NULL, full.elem = NA, epsi.effect = NA, 
+	sim.dmat = NULL, sim.flev = NULL, sim.cellN = NULL, esmain = NA, sig.term = NA, bet.with = NA, internal.lab = NA, 
+	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, autov = autov, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE, 
+	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE, 
 	gomega = NA, gomegana = NA, prep = FALSE){
 	maxfact <- nchar(design) - 1# 実験計画全体における要因数
 	spos <- match("s", strsplit(design, "")[[1]], nomatch = 0)
@@ -2653,7 +2654,7 @@ boot.inter <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NULL, 
 	rtargetnm <- sort(targetnm, decreasing = TRUE)# 逆順にしたもの
 	desnm <- c(betlen, withlen)# オリジナルのデザインの被験者間・被験者内の要因数
 	sublevn <- lapply(LETTERS[rtargetnm], function(x) desnm - diag(2)[grep(x, bet.with), ])# 単純主効果の検定での被験者間・被験者内の要因数
-	subdesign <- sapply(sublevn, function(x) paste0(paste0(LETTERS[min(1, x[1]):x[1]], collapse = ""), "s",
+	subdesign <- sapply(sublevn, function(x) paste0(paste0(LETTERS[min(1, x[1]):x[1]], collapse = ""), "s", 
 		paste0(LETTERS[(x[2] != 0) * (x[1]+1):sum(x)], collapse = "")))# 単純主効果の検定のデザイン
 	subdesign <- rep(subdesign, flev[rtargetnm])# ターゲット要因の水準数だけ繰り返す
 
@@ -2680,18 +2681,18 @@ boot.inter <- function(dat, design, factnames = NA, type2 = FALSE, dmat = NULL, 
 		}
 
 		# 検定の実行
-		sim.effects <- lapply(1:simtimes, function(x) anova.modeler(dat = subdat[[x]], design = subdesign[x],
-			factnames = factnames[-nmline[x]], type2 = type2, dmat = sim.dmat[[x]], flev = sim.flev[[x]], cellN = sim.cellN[x],
-			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana,
-			pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep, inter = interlab[x], bet.mse = bet.mse,
+		sim.effects <- lapply(1:simtimes, function(x) anova.modeler(dat = subdat[[x]], design = subdesign[x], 
+			factnames = factnames[-nmline[x]], type2 = type2, dmat = sim.dmat[[x]], flev = sim.flev[[x]], cellN = sim.cellN[x], 
+			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, 
+			pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep, inter = interlab[x], bet.mse = bet.mse, 
 			gss.qT = gss.qT, post.esdenomis = post.esdenomis[x, , drop = FALSE], esboot = TRUE))
 		simes <- as.vector(do.call(rbind, sim.effects))
 	}else{# 反復測定要因を含む場合
 		# 検定の実行
-		sim.effects <- lapply(1:simtimes, function(x) anova.modeler(dat = subdat[[x]], design = subdesign[x],
-			factnames = factnames[-nmline[x]], type2 = type2, dmat = sim.dmat[[x]], flev = sim.flev[[x]], cellN = sim.cellN[x],
-			lb = lb, gg = gg, hf = hf, cm = cm, autov = autov[x], mau = mau, har = har, iga = iga, ciga = ciga,
-			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana,
+		sim.effects <- lapply(1:simtimes, function(x) anova.modeler(dat = subdat[[x]], design = subdesign[x], 
+			factnames = factnames[-nmline[x]], type2 = type2, dmat = sim.dmat[[x]], flev = sim.flev[[x]], cellN = sim.cellN[x], 
+			lb = lb, gg = gg, hf = hf, cm = cm, autov = autov[x], mau = mau, har = har, iga = iga, ciga = ciga, 
+			eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, omega = omega, omegana = omegana, 
 			pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep, inter = interlab[x], esboot = TRUE))
 		simes <- as.vector(do.call(rbind, sim.effects))
 	}
@@ -2741,7 +2742,7 @@ anova.output <- function(maxfact, exe.info, baseresults, mainresults, postresult
 			epsi.info2 <- "multiplier = b_hat or c_hat"
 			epsi.margin <- c(anyNA(epsitab$df) * (1:nrow(epsitab))[!is.na(epsitab$df)] - 1, nrow(epsitab))
 		}
-		table.out(epsitab, titleinfo = epsitab.title, subinfo1 = epsi.info1, subinfo2 = epsi.info2, lmargin = epsi.margin,
+		table.out(epsitab, titleinfo = epsitab.title, subinfo1 = epsi.info1, subinfo2 = epsi.info2, lmargin = epsi.margin, 
 			use.header = epsi.header, tnick = 0, rndpos = 4, strpos = c(1, 4), na.erase = 5, leftal = 6, sep = sep)
 		cat("\n")
 	}
@@ -2763,13 +2764,13 @@ anova.output <- function(maxfact, exe.info, baseresults, mainresults, postresult
 		ano.nick <- 1
 		ano.erase <- 5:6
 	}
-	table.out(anovatab, titleinfo = anovatab.title, subinfo1 = ano.info1, subinfo2 = ano.info2, use.header = ano.header,
+	table.out(anovatab, titleinfo = anovatab.title, subinfo1 = ano.info1, subinfo2 = ano.info2, use.header = ano.header, 
 		lmargin = mse.row, tnick = ano.nick, rndpos = 3, na.erase = ano.erase, leftal = 7, sep = sep)
 	cat("\n")
 	if(!anyNA(nesci.info1)){# 非心分布に基づく効果量の信頼区間を出力する場合
 		esci.title <- "<< EFFECT SIZE INFORMATION >>"
 		efrowsize <- nrow(anovatab) - length(mse.row) - 1
-		table.out(nescitab, titleinfo = esci.title, subinfo1 = nesci.info1, lmargin = efrowsize * 1:(nrow(nescitab)/efrowsize),
+		table.out(nescitab, titleinfo = esci.title, subinfo1 = nesci.info1, lmargin = efrowsize * 1:(nrow(nescitab)/efrowsize), 
 			sep = sep)
 		cat("\n")
 	}
@@ -2780,7 +2781,7 @@ anova.output <- function(maxfact, exe.info, baseresults, mainresults, postresult
 			esci.title <- "<< EFFECT SIZE INFORMATION >>"
 		}
 		efrowsize <- nrow(anovatab) - length(mse.row) - 1
-		table.out(mainresults$bescitab, titleinfo = esci.title, subinfo1 = mainresults$besci.info,
+		table.out(mainresults$bescitab, titleinfo = esci.title, subinfo1 = mainresults$besci.info, 
 			lmargin = efrowsize * 1:(nrow(mainresults$bescitab)/efrowsize), sep = sep)
 		cat("\n")
 	}
@@ -2799,10 +2800,10 @@ anova.output <- function(maxfact, exe.info, baseresults, mainresults, postresult
 			cat("\n")# １行空ける
 		}else if(nchar(postnames[i]) == 3){# 一次の交互作用が見られた場合
 			if(maxfact == 2){
-				simeffects.out(postresults[[i]], epsi.info2 = epsi.info2, epsi.header = epsi.header, ano.info2 = ano.info2,
+				simeffects.out(postresults[[i]], epsi.info2 = epsi.info2, epsi.header = epsi.header, ano.info2 = ano.info2, 
 					ano.header = ano.header, ano.nick = ano.nick, ano.erase = ano.erase, omit = TRUE, sep = sep)
 			}else{
-				simeffects.out(postresults[[i]], epsi.info2 = epsi.info2, epsi.header = epsi.header, ano.info2 = ano.info2,
+				simeffects.out(postresults[[i]], epsi.info2 = epsi.info2, epsi.header = epsi.header, ano.info2 = ano.info2, 
 					ano.header = ano.header, ano.nick = ano.nick, ano.erase = ano.erase, sep = sep)
 			}
 		}else if(nchar(postnames[i]) >= 5){# 高次の交互作用が見られた場合
@@ -2819,7 +2820,7 @@ anova.output <- function(maxfact, exe.info, baseresults, mainresults, postresult
 # データフレームに書式を与えて出力する関数
 # smargin：空白を挿入する行，lmargin：ラインを挿入する行，tnick：表中の文字間隔，rndpos：桁数を縮めて表示する列
 # strpos：文字列として表示する列，na.erase：NAを表示させない列，leftal：左寄せする列
-table.out <- function(dattable, titleinfo = NULL, subinfo1 = NULL, subinfo2 = NULL, use.header = NULL, smargin = nrow(dattable),
+table.out <- function(dattable, titleinfo = NULL, subinfo1 = NULL, subinfo2 = NULL, use.header = NULL, smargin = nrow(dattable), 
 	lmargin = nrow(dattable), tnick = 1, rndpos = 0, strpos = rndpos, na.erase = NULL, leftal = NULL, sep = " "){
 	# ヘッダとテーブル本体の要素の表示マージンを決定する
 	tabline <- pmax(3, sapply(1:ncol(dattable), function(x) ifelse(is.numeric(dattable[, x]), max(nchar(sprintf("%.4f", dattable[, x]), type = "width")), max(nchar(as.character(dattable[, x]), type = "width")))) + tnick)
@@ -2836,7 +2837,7 @@ table.out <- function(dattable, titleinfo = NULL, subinfo1 = NULL, subinfo2 = NU
 	mainline <- sum(tabline) + length(tabline)
 	headmargin <- sapply(tabline, function(x) paste0("%", x, "s"))
 	bodymargin <- headmargin
-	coltype <- sapply(1:ncol(dattable), function(x) is.factor(dattable[, x]) | is.character(dattable[, x]))# 各列がfactor型か文字型ならチェック
+	coltype <- sapply(1:ncol(dattable), function(x) is.factor(dattable[, x]) | is.character(dattable[, x]))# 各列がfactor型か文字型ならチェック	
 	coltype[strpos] <- TRUE# 指定された列については，数値型でも文字列として出力
 	bodymargin[!coltype] <- paste0("%", tabline[!coltype], ".4f")# factor型・文字型でないところは数値型で出力
 	bodymargin[leftal] <- gsub("%", "%-", bodymargin[leftal])# 左寄せを指定する列
@@ -2894,7 +2895,7 @@ mod.Bon.out <- function(bon.list, omit = FALSE, sep = " "){
 	bon.info3 <- bon.list[[4]]
 	bonstat <- bon.list[[5]]
 	bontab <- bon.list[[6]]
-	Bon.header <- c("Pair", "Diff", "t-value", "df", "p", "adj.p", "")
+	Bon.header <- c("Pair", "Diff", "t-value", "df", "p", names(bontab[6]), "")
 
 	cat(sprintf(paste0("< MULTIPLE COMPARISON for \"", factlabel, "\" >")), sep = "", "\n", "\n")# タイトル
 	cat(sprintf(bon.info1), sep = "\n")# プロンプト
@@ -2912,7 +2913,7 @@ mod.Bon.out <- function(bon.list, omit = FALSE, sep = " "){
 
 
 # 単純主効果の検定の結果を出力する関数
-simeffects.out <- function(partresult, epsi.info2 = NA, epsi.header = NA, ano.info2 = NA, ano.header = NA, ano.nick = NA,
+simeffects.out <- function(partresult, epsi.info2 = NA, epsi.header = NA, ano.info2 = NA, ano.header = NA, ano.nick = NA, 
 	ano.erase = NA, omit = FALSE, sep = " "){
 	# 情報を展開
 	part.info1 <- partresult[[1]]
@@ -2922,7 +2923,7 @@ simeffects.out <- function(partresult, epsi.info2 = NA, epsi.header = NA, ano.in
 	partmulttab <- partresult$sim.multresults
 	partnesci <- partresult$simnesci
 
-	cat(sprintf("%s", paste0("< SIMPLE EFFECTS for \"", part.info1, "\" INTERACTION >"), sep = ""), sep = "", "\n", "\n")# タイトル
+	cat(sprintf("%s", paste0("< SIMPLE EFFECTS for \"", part.info1, "\" INTERACTION >")), sep = "", "\n", "\n")# タイトル
 
 	# omitがFALSEなら記述統計量を出力する
 	if(!omit){
@@ -2932,7 +2933,7 @@ simeffects.out <- function(partresult, epsi.info2 = NA, epsi.header = NA, ano.in
 	# 球面性検定の結果を出力
 	if(is.na(charmatch("Error", parttab$source.col)) && !is.na(partepsi)){
 		# 被験者内計画，混合要因計画なら球面性検定の結果を出力する
-		table.out(partepsi, subinfo2 = epsi.info2, use.header = epsi.header, tnick = c(1, rep(0, length(epsi.header) - 1)),
+		table.out(partepsi, subinfo2 = epsi.info2, use.header = epsi.header, tnick = c(1, rep(0, length(epsi.header) - 1)), 
 			rndpos = 4, strpos = c(1, 4), na.erase = 5, leftal = 6, sep = sep)
 		efrowsize <- nrow(parttab)/2
 		linepos <- 2 * 1:(nrow(parttab)/2)
@@ -2942,7 +2943,7 @@ simeffects.out <- function(partresult, epsi.info2 = NA, epsi.header = NA, ano.in
 	}
 
 	# 分散分析表を出力
-	table.out(parttab, subinfo2 = ano.info2, use.header = ano.header, lmargin = linepos, tnick = ano.nick, rndpos = 3,
+	table.out(parttab, subinfo2 = ano.info2, use.header = ano.header, lmargin = linepos, tnick = ano.nick, rndpos = 3, 
 		strpos = c(1, 3), na.erase = ano.erase, leftal = 7, sep = sep)
 	if(!all(is.na(partnesci))){# 非心分布に基づく効果量の信頼区間を出力する場合
 		table.out(partnesci, lmargin = efrowsize * 1:(nrow(partnesci)/efrowsize), strpos = 2, sep = sep)
@@ -2966,11 +2967,11 @@ simeffects.out <- function(partresult, epsi.info2 = NA, epsi.header = NA, ano.in
 # 指定した要因についてデータを分割して単純効果の検定を行う関数；３要因以上の計画での使用を想定
 # tfactの引数として分割の基準とする要因のラベルを指定する（tfact = "A"など）
 # 同時に複数の要因について分割する場合，tfact = c("A", "C")のような形式で入力する
-anovatan <- function(dataset, design, ..., tfact = NULL, long = FALSE, type2 = FALSE, nopost = FALSE, tech = FALSE, data.frame = FALSE, copy = FALSE,
-	holm = FALSE, hc = FALSE, s2r = FALSE, s2d = FALSE, fs1 = FALSE, fs2r = FALSE, fs2d = FALSE, welch = FALSE, criteria = FALSE,
-	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE,
-	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE,
-	gomega = NA, gomegana = NA, prep = FALSE, nesci = FALSE, besci = FALSE, cilmd = FALSE, cilm = FALSE, cind = FALSE, cin = FALSE, ciml = FALSE,
+anovatan <- function(dataset, design, ..., tfact = NULL, long = FALSE, type2 = FALSE, nopost = FALSE, tech = FALSE, data.frame = FALSE, copy = FALSE, 
+	holm = FALSE, hc = FALSE, s2r = FALSE, s2d = FALSE, fs1 = FALSE, fs2r = FALSE, fs2d = FALSE, welch = FALSE, criteria = FALSE, 
+	lb = FALSE, gg = FALSE, hf = FALSE, cm = FALSE, auto = FALSE, mau = FALSE, har = FALSE, iga = FALSE, ciga = FALSE, 
+	eta = FALSE, peta = FALSE, geta = NA, eps = FALSE, peps = FALSE, geps = NA, omega = FALSE, omegana = FALSE, pomega = FALSE, 
+	gomega = NA, gomegana = NA, prep = FALSE, nesci = FALSE, besci = FALSE, cilmd = FALSE, cilm = FALSE, cind = FALSE, cin = FALSE, ciml = FALSE, 
 	cipaird = FALSE, cipair = FALSE, bgraph = c(NA, NA)){
 	# 分割する要因が指定されていない場合は終了
 	if(is.null(tfact)){
@@ -3021,11 +3022,11 @@ anovatan <- function(dataset, design, ..., tfact = NULL, long = FALSE, type2 = F
 	# anovakunの実行
 	for(i in 1:length(subdat)){
 		cat("\n", sprintf(paste0("[[ Simple Effects for ", names(subdat)[i], " ]]")), "\n", sep = "")
-		anovakun(dataset = subdat[[i]][, -(targetnm + 1)], design = subdesign, long = TRUE, type2 = type2, nopost = nopost,
-			tech = tech, data.frame = FALSE, copy = FALSE, holm = holm, hc = hc, s2r = s2r, s2d = s2d, fs1 = fs1, fs2r = fs2r,
-			fs2d = fs2d, welch = welch, criteria = criteria, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, mau = mau,
-			har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps,
-			omega = omega, omegana = omegana, pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep, nesci = nesci, besci = besci,
+		anovakun(dataset = subdat[[i]][, -(targetnm + 1)], design = subdesign, long = TRUE, type2 = type2, nopost = nopost, 
+			tech = tech, data.frame = FALSE, copy = FALSE, holm = holm, hc = hc, s2r = s2r, s2d = s2d, fs1 = fs1, fs2r = fs2r, 
+			fs2d = fs2d, welch = welch, criteria = criteria, lb = lb, gg = gg, hf = hf, cm = cm, auto = auto, mau = mau, 
+			har = har, iga = iga, ciga = ciga, eta = eta, peta = peta, geta = geta, eps = eps, peps = peps, geps = geps, 
+			omega = omega, omegana = omegana, pomega = pomega, gomega = gomega, gomegana = gomegana, prep = prep, nesci = nesci, besci = besci, 
 			cilmd = cilmd, cilm = cilm, cind = cind, cin = cin, ciml = ciml, cipaird = cipaird, cipair = cipair, bgraph = bgraph)
 	}
 
