@@ -1,6 +1,3 @@
----
-title: Ranova -- R Packed Anovakun
----
 # Ranova -- R Packed Anovakun
 
 Ranovaは井関龍太先生が公開されている分散分析関数 - ANOVA君をパッケージ化したものです｡  
