@@ -1,6 +1,5 @@
 .DS_Store
 .Rhistory
 .RData
-RANOVA.RCheck
-.tar.gz
-
+*.RCheck
+*.tar.gz
