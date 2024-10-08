@@ -12,7 +12,7 @@ read.clip <- function(...){
 	plat.info <- .Platform
 	if(sum(grep("windows", plat.info)) != 0){# Windowsの場合
 		outboard <- "clipboard"
-	}else if(sum(grep("mac", plat.info)) != 0){# Macの場合
+	}else if(sum(grep("unix", plat.info)) != 0){# Macの場合
 		outboard <- pipe("pbpaste")
 	}else if(sum(grep("linux", R.version$system)) != 0){# Linuxの場合（xclipをインストールしている必要がある）
 		outboard <- pipe("xclip -o -selection clipboard")
