@@ -1,0 +1,10 @@
+export("anova.modeler", "anova.output", "anovatan", "boot.anova",
+       "boot.esci", "boot.inter", "ci.bars", "ci.calc", "elematch",
+       "epsilon.calc", "expand.gmatrix", "hmean", "mod.Bon",
+       "mod.Bon.out", "mpginv", "post.analyses", "pro.fraction",
+       "qlambda.ncf", "ranova", "read.clip", "sig.sign",
+       "simeffects.out", "ss.calc", "table.out", "uni.long", "wj.calc")
+
+import(dplyr)
+import(magrittr)
+import(rlang)
